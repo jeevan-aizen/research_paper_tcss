@@ -1,0 +1,10 @@
+{
+  "model": "roberta-base",
+  "seed": 123,
+  "class_weighted": false,
+  "train_seconds": 275.7,
+  "test_inference_seconds": 3.89,
+  "ms_per_post": 1.011,
+  "peak_vram_mib": 2465.8,
+  "gpu": "Tesla T4"
+}

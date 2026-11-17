@@ -1,0 +1,7 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "four_bit": false,
+  "prompt": "You are a content moderator. Classify the social media post into exactly one category.\n\nA) Hate speech: language that expresses hatred towards a targeted group, or is intended to be derogatory, to humiliate, or to insult the members of the group based on attributes such as race, religion, ethnicity, sexual orientation, disability, or gender.\nB) Offensive language: offensive, vulgar or insulting language that is not hate speech as defined above.\nC) Neither: not offensive and not hate speech.\n\nPost: \"\"\"{text}\"\"\"\n\nAnswer with a single letter (A, B, or C).",
+  "scoring_seconds_this_session": 2638.5,
+  "ms_per_post": 137.21
+}

@@ -1,0 +1,10 @@
+{
+  "model": "vinai/bertweet-base",
+  "seed": 456,
+  "class_weighted": false,
+  "train_seconds": 288.1,
+  "test_inference_seconds": 5.0,
+  "ms_per_post": 1.3,
+  "peak_vram_mib": 2582.1,
+  "gpu": "Tesla T4"
+}

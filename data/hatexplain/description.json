@@ -1,0 +1,43 @@
+{
+  "n": 19229,
+  "per_class": {
+    "hate": 5935,
+    "offensive": 5480,
+    "neither": 7814
+  },
+  "per_class_pct": {
+    "hate": 30.86,
+    "offensive": 28.5,
+    "neither": 40.64
+  },
+  "exact_duplicate_texts": 37,
+  "empty_after_cleaning": 0,
+  "unanimous_label_pct": 51.2,
+  "split_sizes": {
+    "42": {
+      "train": 13460,
+      "val": 1923,
+      "test": 3846
+    },
+    "123": {
+      "train": 13460,
+      "val": 1923,
+      "test": 3846
+    },
+    "456": {
+      "train": 13460,
+      "val": 1923,
+      "test": 3846
+    },
+    "789": {
+      "train": 13460,
+      "val": 1923,
+      "test": 3846
+    },
+    "1011": {
+      "train": 13460,
+      "val": 1923,
+      "test": 3846
+    }
+  }
+}

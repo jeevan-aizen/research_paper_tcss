@@ -1,0 +1,18 @@
+\begin{tabular}{llcccc}
+\toprule
+ & & \multicolumn{2}{c}{No review} & \multicolumn{2}{c}{10\% review} \\
+Model & Group & FHF & FAF & FAF & Deferred \\
+\midrule
+\multirow{3}{*}{LR-bal} & AAE & 0.069 & 0.222 & 0.177 & 0.081 \\
+ & WAE & 0.098 & 0.047 & 0.031 & 0.142 \\
+ & AAE/WAE & \textbf{0.70} & \textbf{4.73} & \textbf{5.72} & \textbf{0.57} \\ \midrule
+\multirow{3}{*}{Linear SVM-bal} & AAE & 0.024 & 0.315 & 0.230 & 0.057 \\
+ & WAE & 0.062 & 0.076 & 0.046 & 0.182 \\
+ & AAE/WAE & \textbf{0.38} & \textbf{4.17} & \textbf{4.97} & \textbf{0.31} \\ \midrule
+\multirow{3}{*}{HateBERT-w} & AAE & 0.015 & 0.246 & 0.179 & 0.081 \\
+ & WAE & 0.057 & 0.048 & 0.027 & 0.136 \\
+ & AAE/WAE & \textbf{0.26} & \textbf{5.13} & \textbf{6.54} & \textbf{0.60} \\ \midrule
+\multirow{3}{*}{BERTweet} & AAE & 0.007 & 0.326 & 0.273 & 0.048 \\
+ & WAE & 0.037 & 0.056 & 0.033 & 0.157 \\
+ & AAE/WAE & \textbf{0.19} & \textbf{5.81} & \textbf{8.23} & \textbf{0.31} \\ \bottomrule
+\end{tabular}

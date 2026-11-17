@@ -1,0 +1,16 @@
+\begin{tabular}{llccc}
+\toprule
+Model & Hardware & Training & Inference & Peak GPU \\
+ & & (per split) & (ms/post) & memory (GB) \\
+\midrule
+LR-bal & CPU & 1.4\,s / 2.5\,s & $<$0.01 & -- \\
+Linear SVM-bal & CPU & 0.2\,s / 0.2\,s & $<$0.01 & -- \\
+GA search (LR/MNB) & CPU & 4.3\,min / 3.8\,min & $<$0.01 & -- \\
+BPSO + LR-bal & CPU & 3.1\,min / 2.8\,min & $<$0.01 & -- \\
+RoBERTa & T4 GPU & 4.8\,min / 4.6\,min & 0.70 / 1.03 & 2.4 / 2.4 \\
+BERTweet & T4 GPU & 5.0\,min / 4.9\,min & 0.83 / 1.22 & 2.1 / 2.5 \\
+HateBERT & T4 GPU & 4.1\,min / 3.7\,min & 0.71 / 1.07 & 1.9 / 2.2 \\
+HateBERT-w & T4 GPU & 4.2\,min / 3.8\,min & 0.71 / 1.07 & 1.9 / 2.2 \\
+Qwen2.5-3B (zero-shot) & T4 GPU & -- & 531 / $\approx$620$^{a}$ & 6.2$^{b}$ \\
+\bottomrule
+\end{tabular}

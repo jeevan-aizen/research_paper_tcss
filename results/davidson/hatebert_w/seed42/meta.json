@@ -1,0 +1,10 @@
+{
+  "model": "GroNLP/hateBERT",
+  "seed": 42,
+  "class_weighted": true,
+  "train_seconds": 244.0,
+  "test_inference_seconds": 3.65,
+  "ms_per_post": 0.737,
+  "peak_vram_mib": 1947.8,
+  "gpu": "Tesla T4"
+}
