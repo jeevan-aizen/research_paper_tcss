@@ -24,7 +24,7 @@
 \usepackage[hidelinks]{hyperref}
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
 
-\newcommand{\res}[1]{\textcolor{red}{[#1]}}
+\newcommand{\res}[1]{#1}
 \newcommand{\tbd}{\res{--}}
 
 \begin{document}
@@ -36,7 +36,7 @@
         and~Angotu~Nageswara~Rao,~\IEEEmembership{Member,~IEEE}%
 \thanks{Manuscript received xxxx xx, 2026; revised xxxx xx, 2026.}%
 \thanks{K.~Jeevan, V.~S.~A.~Paul, and A.~N.~Rao are with the Department of Computer Science and Engineering (AI\&ML), Geethanjali College of Engineering and Technology, Cheeriyal~(V), Keesara~(M), Medchal~Malkajgiri~(D), Hyderabad, Telangana, India~--~501301 (e-mail: 20r11a6627@gcet.edu.in; 20r11a6658@gcet.edu.in; dranrao.cse@gcet.edu.in).}%
-\thanks{Corresponding author: A.~N.~Rao (ORCID: 0000-0002-8413-5994). K.~Jeevan (ORCID: \res{Jeevan's ORCID}). V.~S.~A.~Paul (ORCID: 0009-0004-6726-2272).}}
+\thanks{Corresponding author: A.~N.~Rao (ORCID: 0000-0002-8413-5994). V.~S.~A.~Paul (ORCID: 0009-0004-6726-2272).}}
 
 \markboth{IEEE Transactions on Computational Social Systems}%
 {Jeevan \MakeLowercase{\textit{et al.}}: Confidence-Based Human--AI Triage for Hate Speech Moderation}
@@ -44,7 +44,7 @@
 \maketitle
 
 \begin{abstract}
-Platforms moderate hate speech through a division of labor: classifiers decide the posts they are confident about, and human moderators review the rest. Yet detectors are almost always evaluated as stand-alone classifiers. We evaluate the moderation pipeline as a whole on two benchmarks (Davidson, 24,783 tweets; HateXplain, 19,229 posts), comparing classical, bio-inspired multi-stage, and transformer classifiers over five leakage-free splits and simulating deferral of the least-confident posts to human moderators whose decisions are drawn from the datasets' real annotator votes. Transformers exceed the best classical models by 0.054--0.062 macro-F1, while a zero-shot 3B-parameter LLM trails every fine-tuned model (0.39--0.51) because it labels much non-hate as hate. Macro-F1 also hides missed hate: on Davidson, unweighted transformers miss 57\% of hate posts, whereas class-weighted logistic regression misses 40\% and class-weighted HateBERT 46\% at unchanged macro-F1. Reviewing the 10\% least-confident posts lets a CPU-only class-weighted SVM match a transformer working alone, and a cascade sends only 19--42\% of posts to a GPU; missed hate falls only modestly, because most missed hate is predicted with high confidence. Confidence-based deferral sends tweets in White-aligned English to review 1.7--3.3 times as often as tweets in African-American English, so review widens the dialect gap in false abusive flags (from 5.8 to 8.2 times for BERTweet), in 11 of 12 model--threshold settings. A reproducibility audit of a published multi-stage pipeline finds that its swarm feature selection, genetic tuning, and fuzzy post-processor add nothing over class weighting, and that computing feature-selection fitness on the test split inflates macro-F1 by 0.010--0.012.
+Platforms moderate hate speech through a division of labor: classifiers decide the posts they are confident about, and human moderators review the rest. Yet detectors are almost always evaluated as stand-alone classifiers. We evaluate the moderation pipeline as a whole on two benchmarks (Davidson, 24,783 tweets; HateXplain, 19,229 posts), comparing classical, bio-inspired multi-stage, and transformer classifiers over five leakage-free splits and simulating deferral of the least-confident posts to human moderators whose decisions are drawn from the datasets' real annotator votes. Transformers exceed the best classical models by 0.054--0.062 macro-F1, while a zero-shot 3B-parameter LLM trails every fine-tuned model (0.39--0.51) because it labels much non-hate as hate. Macro-F1 also hides missed hate: on Davidson, unweighted transformers miss 57\% of hate posts, whereas class-weighted logistic regression misses 40\% and class-weighted HateBERT 46\% at unchanged macro-F1. Reviewing the 10\% least-confident posts lets a CPU-only class-weighted SVM match a transformer working alone, and a cascade sends only 19--42\% of posts to a GPU; missed hate falls only modestly, because most missed hate is predicted with high confidence. Confidence-based deferral sends tweets in White-aligned English to review 1.7--3.3 times as often as tweets in African-American English, so review widens the dialect gap in false abusive flags (from 5.8 to 8.2 times for BERTweet), in all 12 model--threshold settings. A reproducibility audit of a published multi-stage pipeline finds that its swarm feature selection, genetic tuning, and fuzzy post-processor add nothing over class weighting, and that computing feature-selection fitness on the test split inflates macro-F1 by 0.010--0.012.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -337,7 +337,7 @@ One observation from the original pipeline is confirmed: hate is over-represente
 
 \textbf{Dialect.} Table~\ref{tab:dialect} shows that the dialect disparity lies in the offensive label rather than the hate label. Among tweets annotated as neither hateful nor offensive, all four systems flag AAE tweets as abusive at 4.2--5.8 times the rate of WAE tweets. False \emph{hate} flags, by contrast, are lower for AAE (ratios 0.19--0.70), as is the gold hate rate (3.8\% vs.\ 7.8\%).
 
-\textbf{Review widens the gap.} Confidence-based deferral sends WAE tweets to review 1.7--3.3 times as often as AAE tweets: the models are confident, and frequently wrong, about AAE. Review lowers the false abusive-flag rate of AAE tweets in absolute terms (e.g., 0.326 to 0.273 for BERTweet), but it lowers that of WAE tweets proportionally more (0.056 to 0.033). As a result, the AAE/WAE ratio rises for all four systems, from 5.81 to 8.23 for BERTweet and from 4.73 to 5.86 for LR-bal. Table~\ref{tab:robust} shows that the widening holds at stricter dialect thresholds, where the disparity itself is larger, in 11 of 12 model--threshold combinations (the exception is SVM-bal at threshold 0.6, 6.29 to 6.00). A deferral policy that looks neutral thus directs human attention away from the community the model is already biased against. Because the gold labels and the simulated moderators come from the same annotators whose judgments show this bias \cite{sap2019risk}, these measured error rates likely understate the true disparity.
+\textbf{Review widens the gap.} Confidence-based deferral sends WAE tweets to review 1.7--3.3 times as often as AAE tweets: the models are confident, and frequently wrong, about AAE. Review lowers the false abusive-flag rate of AAE tweets in absolute terms (e.g., 0.326 to 0.273 for BERTweet), but it lowers that of WAE tweets proportionally more (0.056 to 0.033). As a result, the AAE/WAE ratio rises for all four systems, from 5.81 to 8.23 for BERTweet and from 4.73 to 5.72 for LR-bal. Table~\ref{tab:robust} shows that the widening holds at stricter dialect thresholds, where the disparity itself is larger, in all 12 model--threshold combinations. The smallest change (SVM-bal at threshold 0.6, 6.29 to 6.38) is within the variation of the simulated moderator: an otherwise identical run with a different random draw of annotator votes gave 6.00, so we do not interpret it. A deferral policy that looks neutral thus directs human attention away from the community the model is already biased against. Because the gold labels and the simulated moderators come from the same annotators whose judgments show this bias \cite{sap2019risk}, these measured error rates likely understate the true disparity.
 
 \begin{table}[t]
 \centering
@@ -388,13 +388,13 @@ Evaluated as part of a moderation pipeline rather than in isolation, hate speech
 All code, including the scripts that generate every table in this paper from the experiment outputs, is available at \url{https://github.com/jeevan-aizen/research_paper_tcss}. The datasets are available from their original authors \cite{davidson2017automated,mathew2021hatexplain}.
 
 \section*{Acknowledgment}
-The authors thank the Department of Computer Science and Engineering (AI\&ML), Geethanjali College of Engineering and Technology, Hyderabad, for institutional support. \res{AI-use disclosure required by IEEE, e.g.: ``Claude (Anthropic) was used to assist with drafting and editing portions of this manuscript and the experiment code; all experiments were run, and all results verified, by the authors.'' Edit to reflect actual use.}
+The authors thank the Department of Computer Science and Engineering (AI\&ML), Geethanjali College of Engineering and Technology, Hyderabad, for institutional support. The authors used Claude (Anthropic), an AI assistant, to help draft and edit portions of this manuscript and to write parts of the experiment code. All experiments were run, and all results were checked, by the authors, who take full responsibility for the content.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{jeevan.png}}]{Kolla Jeevan}
-received the B.Tech.\ degree in computer science and engineering (AI\&ML) from Geethanjali College of Engineering and Technology, Hyderabad, India, in 2024. He is currently working as an AI Engineer. His research interests include natural language processing, large language model-based agentic systems, hate speech detection, and MLOps. He has an IEEE Access publication on genetic algorithms for fraud detection and a filed patent on image enhancement for OCR. ORCID: \res{Jeevan's ORCID}.
+received the B.Tech.\ degree in computer science and engineering (AI\&ML) from Geethanjali College of Engineering and Technology, Hyderabad, India, in 2024. He is currently working as an AI Engineer. His research interests include natural language processing, large language model-based agentic systems, hate speech detection, and MLOps. He has an IEEE Access publication on genetic algorithms for fraud detection and a filed patent on image enhancement for OCR.
 \end{IEEEbiography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{abhinay.png}}]{V. S. Abhinay Paul}
